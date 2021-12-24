@@ -1,10 +1,15 @@
 package jp.ac.uryukyu.ie.e215712;
 
+import java.util.ArrayList;
+
 public abstract class LivingThing {
     String name;
     int hitPoint;
     int attack;
     int defence;
+    boolean dead = false;
+    ArrayList<Action> actions = new ArrayList<>();
+    
 
     public String getName(){
         return name;
@@ -22,6 +27,10 @@ public abstract class LivingThing {
         return defence;
     }
 
+    public boolean getDead(){
+        return dead;
+    }
+
     public void setHitPoint(int _hitPoint){
         this.hitPoint = _hitPoint;
     }
@@ -33,4 +42,25 @@ public abstract class LivingThing {
     public void setDefence(int _defence){
         this.defence = _defence;
     }
+
+    public void setDead(boolean _dead){
+        this.dead = _dead;
+    }
+
+    public void addAction(Action _action){
+        this.actions.add(_action);
+    }
+
+    public void showAction(){
+        var number = 0;
+        for (Action a: actions){
+            System.out.println(number + ":"+ a.name());
+        }
+    }
+
+    public void showStatus(){
+        System.out.printf("%s : HP %d \n", this.name, this.hitPoint);
+    }
+    abstract void act(LivingThing target);
+    abstract void judgement();
 }
