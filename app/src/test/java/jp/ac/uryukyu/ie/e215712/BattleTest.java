@@ -8,7 +8,7 @@ class BattleTest {
     @Test
     void battleTest(){
         int defalutHitPoint = 100;
-        LivingThing demoHero = new Hero("デモ勇者", defalutHitPoint, 100, 100);
+        LivingThing demoHero = new Hero("デモ勇者", defalutHitPoint, 100, 100, 100);
         demoHero.addAction(new Attack());
         LivingThing demoEnemy = new Enemy("デモエネミー", 10, 1, 10);
         demoEnemy.addAction(new Attack());

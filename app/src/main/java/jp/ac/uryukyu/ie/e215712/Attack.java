@@ -1,18 +1,21 @@
 package jp.ac.uryukyu.ie.e215712;
 
-public class Attack implements ActionToEnemies{
+public class Attack implements Action{
+    final String TYPE = "ToEnemies";
     @Override
-    public String name(){
+    public String getType(){
+        return this.TYPE;
+    }
+    @Override
+    public String getName(){
         return "たたかう";
     }
 
     @Override
     public void execute(LivingThing executer, LivingThing target){
-        int executerAttack = executer.getAttack();
-        int targetHitPoint = target.getHitPoint();
-        targetHitPoint -= executerAttack;
-        target.setHitPoint(targetHitPoint);
+        target.dameged(executer.getAttack());
         System.out.println(executer.getName() + "の攻撃！");
-        System.out.println(target.getName() + "に" + executerAttack + "のダメージ！");
+        System.out.println(target.getName() + "に" + executer.getAttack() + "のダメージ！");
+        target.judgement();
     }
 }

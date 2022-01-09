@@ -7,6 +7,7 @@ public abstract class LivingThing {
     int hitPoint;
     int attack;
     int defence;
+    int magicPoint;
     boolean dead = false;
     ArrayList<Action> actions = new ArrayList<>();
     
@@ -27,6 +28,10 @@ public abstract class LivingThing {
         return defence;
     }
 
+    public int getMagicPoint(){
+        return magicPoint;
+    }
+
     public boolean getDead(){
         return dead;
     }
@@ -43,6 +48,10 @@ public abstract class LivingThing {
         this.defence = _defence;
     }
 
+    public void setMagicPoint(int _magicPoint){
+        this.magicPoint = _magicPoint;
+    }
+
     public void setDead(boolean _dead){
         this.dead = _dead;
     }
@@ -54,12 +63,24 @@ public abstract class LivingThing {
     public void showAction(){
         var number = 0;
         for (Action a: actions){
-            System.out.println(number + ":"+ a.name());
+            System.out.println(number + ":"+ a.getName());
         }
     }
 
     public void showStatus(){
-        System.out.printf("%s : HP %d \n", this.name, this.hitPoint);
+        System.out.printf("%s : HP %d MP %d \n", this.name, this.hitPoint, this.magicPoint);
+    }
+
+    public void dameged(int value){
+        this.hitPoint -= value;
+    }
+
+    public void consumedMP(int value){
+        this.magicPoint -= value;
+    }
+
+    public void healed(int value){
+        this.hitPoint += value;
     }
     abstract void act(LivingThing target);
     abstract void judgement();

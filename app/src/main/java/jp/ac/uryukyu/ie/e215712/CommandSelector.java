@@ -13,7 +13,7 @@ public class CommandSelector {
     }
 
     void addCommand(Action _action){
-        commands.add(_action.name());
+        commands.add(_action.getName());
     }
 
     void clearCommand(Action _action){

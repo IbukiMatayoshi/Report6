@@ -12,8 +12,6 @@ public class Battle {
             enemy.showStatus();
             player.act(enemy);
             enemy.act(player);
-            player.judgement();
-            enemy.judgement();
             turn++;
 
         }

@@ -1,11 +1,12 @@
 package jp.ac.uryukyu.ie.e215712;
 
 public class Hero extends LivingThing {
-    public Hero(String _name, int _hitPoint, int _attack, int _defence){
+    public Hero(String _name, int _hitPoint, int _attack, int _defence, int _magicPoint){
         this.name = _name;
         this.hitPoint = _hitPoint;
         this.attack = _attack;
         this.defence = _defence;
+        this.magicPoint = _magicPoint;
     }
 
     public void setName(String _name){
@@ -23,7 +24,12 @@ public class Hero extends LivingThing {
 
             var commandNumber = commandSelector.commandImput();
 
-            actions.get(commandNumber).execute(this, target);
+            if (actions.get(commandNumber).getType().equals("ToEnemies")){
+                actions.get(commandNumber).execute(this, target);
+            }else{
+                actions.get(commandNumber).execute(this, this);
+            }
+
         } 
         
     }
