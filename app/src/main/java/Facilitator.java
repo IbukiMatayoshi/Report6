@@ -20,6 +20,7 @@ public class Facilitator {
         Battle battle1 = new Battle();
 
         battle1.start(hero1, enemy1);
+        System.out.println("------------");
         battle1.auto(hero2, enemy2);
     }
 }
